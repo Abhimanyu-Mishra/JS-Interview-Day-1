@@ -49,12 +49,14 @@
              null === undefine (false)
     </pre>
     <p>What is the spread operator?</p>
-    <pre>The JAVA Script operator (...) is allows to destricture (copy the value  or combine the two variable) the non premative data-type(array, object) 
+    <pre>The JAVA Script operator (...) is allows to destricture (copy the value  or 
+        combine the two variable) the non premative data-type(array, object).
         
         const array1 = [1, 2, 3, 5, 7,2];
         let [firstelement,secondelement,...rest] = array1;
         console.log(firstelement,secondelement,rest);
-    
+        
+        arr2=[...array1]  (we can accesss the value from one array to another array )
     </pre>
     <p>What are the differences between var, let and const?</p>
     <pre>These are scopes-
@@ -73,6 +75,11 @@
     <p>What is execution context.</p>
     <pre>
         Execution context is defined as the environment in which the JavaScript code is executed.
+
+        There are two types of execution contexts: global and function. The global
+         execution context is created when a JavaScript script first starts to run, and it 
+         represents the global scope in JavaScript. A function execution context is created
+          whenever a function is called, representing the function's local scope
     </pre>
     <p>What is meant by first class functions</p>
     <pre>
@@ -95,7 +102,8 @@
    
     </pre>
     <p>What are closures? Give an example of closure</p>
-    <pre>Closer are those function which is take the access in outer function to the inner function.
+    <pre>In JavaScript, closure provides access to the outer scope of a function from
+         inside the inner function, even after the outer function has closed.
         
         function fun1(a){
             let b = 10;
@@ -111,6 +119,59 @@
     </pre>
     <p>Explain call(), apply() and, bind() methods. Give an example of call(), apply(), bind()</p>
     <pre>
+        The call, bind and apply methods can be used to set the this keyword independent of how
+         a function is called. The bind method creates a copy of the function and sets the this keyword,
+         while the call and apply methods sets the this keyword and calls the function immediately.
+        ---//Call()----//
+        obj1 ={
+            name:'abhi',
+            dep: 'cs',
+            feature:function abhi(a,b){
+                console.log(a+b);
+                console.log(`${this.name} and ${this.dep}`);
+            }
+        }
+        obj2 ={
+            name:'abhi',
+            dep:'mech'
+          
+        }
+         obj1.feature.call(obj2,[3,4])
+      
+         -----//Bind() Method------//
+         obj1 ={
+            name:'abhi',
+            dep: 'cs',
+            feature:function abhi(a,b){
+                console.log(a+b);
+                console.log(`${this.name} and ${this.dep}`);
+            }
+        }
+        obj2 ={
+            name:'abhi',
+            dep:'mech'
+          
+        }
+         var final = obj1.feature.bind(obj1,4,6)
+         final()
+
+
+         obj1 ={
+            name:'abhi',
+            dep: 'cs',
+            feature:function abhi(a,b){
+                console.log(a+b);
+                console.log(`${this.name} and ${this.dep}`);
+            }
+        }
+        obj2 ={
+            name:'abhi',
+            dep:'mech'
+          
+        }
+         obj1.feature.apply(obj2,[3,4])
+      
+
         
     </pre>
     what is first class function.
@@ -196,15 +257,35 @@
 //         fun1(5)
 
 
-function fun1(){
-    if(age){
-        var age =3
-        return 'you are good';
+// function fun1(){
+//     if(age){
+//         var age =3
+//         return 'you are good';
+//     }
+//     console.log(age);
+// }
+obj1 ={
+    name:'abhi',
+    dep: 'cs',
+    feature:function abhi(a,b){
+        console.log(a+b);
+        console.log(`${this.name} and ${this.dep}`);
     }
-    console.log(age);
 }
-fun1()
+obj2 ={
+    name:'abhi',
+    dep:'mech'
+  
+}
 
-    </script>
+// fun1.feature.apply(fun2,[3,4])
+var final = obj1.feature.bind(obj1,4,6)
+final()
+
+
+
+
+
+    </script> 
 </body>
 </html>
